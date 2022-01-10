@@ -21,25 +21,15 @@ const SearchBar = ()=>{
         console.log(data)
     };          
     return(
-        <div>
-            <div>
+        <div className ="searchBar-container">
+            <div className="searchBar">
                 <input type="search" placeholder="Buscar Pokemon..." onChange={onChange}  />
             </div>
-            <div>
+            <div className = "searchBar-btn">
                <button onClick={onClick}>Buscar Pokemon</button>
             </div>
-            <div>
-                {pokemon &&
-            <div>
-            <div>Nombre: {pokemon.name}</div>
-            <div>Peso: {pokemon.weight}</div>
-            <img src ={pokemon.sprites.front_default} />
-            </div>
-                }
-            
-            </div>
         </div>
-    )
+    );
 };
 
 export default SearchBar;
