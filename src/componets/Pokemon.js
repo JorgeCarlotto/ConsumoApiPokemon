@@ -16,7 +16,7 @@ return (
                     return <div className="Pokemon-card-type-text" key={idx}>{type.type.name}</div>; 
                 })}
             </div>
-            <div className="Pokemon-card-favorite">❤</div>
+            <div className="Pokemon-card-favorite">&#x2764;</div>
             </div>
         </div>
     </div>

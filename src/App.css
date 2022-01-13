@@ -163,3 +163,10 @@ nav {
 .Pokemon-card-favorite{
   color: red;
 }
+
+/* PAGINATION */
+.Pagination{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

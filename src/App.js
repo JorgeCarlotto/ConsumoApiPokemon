@@ -9,18 +9,23 @@ const {useState, useEffect} = React;
 
 function App() {
 
-const [pokes,setpokes]= useState([])
+const [pokes,setpokes]= useState([]);
+const [page, setPage] = useState([0]);
+const [total, setTotal]= useState([0]);
+const [loading, setLoading] = useState([true]);
 
 const fechPokemons = async()=>{
   try{
-      const data = await getPokemon();
-      console.log(data.results)
+    setLoading(true);
+      const data = await getPokemon(25, 25* page);
+      // console.log(data.results)
       const promises = data.results.map(async(pokemon)=>{
         return await getPokemonData(pokemon.name)  
       })
       const results = await Promise.all(promises);
       setpokes(results);
-
+      setLoading(false);
+      setTotal(Math.ceil(data.count/25))
     } 
   catch(e){}
   
@@ -28,15 +33,18 @@ const fechPokemons = async()=>{
 
 useEffect(()=>{
   fechPokemons();
-},[])
+},[page])
 
   return (
     <div>
       <Navbar />
       <SearchBar />
-      <Pokedex pokemons={pokes}/>
-      
-
+      <Pokedex 
+      pokemons={pokes}
+      page ={page}
+      setPage ={setPage}
+      total={total}
+       />
     <div className="App"></div>
     
     </div>
