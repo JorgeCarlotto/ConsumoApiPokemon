@@ -16,7 +16,7 @@ const fechPokemons = async()=>{
       const data = await getPokemon();
       console.log(data.results)
       const promises = data.results.map(async(pokemon)=>{
-        return await getPokemonData(pokemon.url)
+        return await getPokemonData(pokemon.name)  
       })
       const results = await Promise.all(promises);
       setpokes(results);

@@ -25,8 +25,8 @@ export const getPokemon = async (limit =10, offset=0) =>{
 
 export const getPokemonData = async (pokemon)=>{
     try{
-        let apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
-        const responce =  await fetch(apiUrl)
+        let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
+        const responce =  await fetch(url)
         const data = await responce.json()  
         return data  
     }

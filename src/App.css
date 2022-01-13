@@ -99,7 +99,67 @@ nav {
 
 .pokedex-grid{
   display:grid;
-  grid-auto-columns: repeat(3, 1fr);
-  grid-gap:10px;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap:18px;
   padding:0px 10px;
+}
+
+/* COMPONENT POKEMON STYLES */
+
+.Pokemon-card{
+  display:flex;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius:3px;  
+}
+
+
+.Pokemon-img-container{
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+
+
+
+.Pokemon-card-top{
+ display: flex;
+ flex-direction: row;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.Pokemon-card-bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items:center;
+ 
+}
+
+.Pokemon-card-type-text{
+  margin-right: 10px;
+  text-transform: capitalize;
+}
+
+.Pokemon-card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  padding: 10px 10px 10px 10px;
+  flex: 1;
+}
+
+.Pokemon-card-top h3{
+  text-transform: capitalize;
+}
+
+.Pokemon-card-type{
+  display: flex;
+  
+}
+
+.Pokemon-card-favorite{
+  color: red;
 }
