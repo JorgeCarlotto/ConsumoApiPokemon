@@ -4,6 +4,7 @@ import Navbar from './componets/NavBar';
 import SearchBar from './componets/SearchBar';
 import Pokedex from './componets/Pokedex';
 import {getPokemon, getPokemonData} from './PokeApi';
+import { FavoriteProvider } from './contexts/favoriteContex';
 
 const {useState, useEffect} = React;
 
@@ -13,6 +14,7 @@ const [pokes,setpokes]= useState([]);
 const [page, setPage] = useState([0]);
 const [total, setTotal]= useState([0]);
 const [loading, setLoading] = useState([true]);
+const [favorites, setFavorites] = useState([])
 
 const fechPokemons = async()=>{
   try{
@@ -35,7 +37,23 @@ useEffect(()=>{
   fechPokemons();
 },[page])
 
+const updateFavoritePokemons = (name) =>{
+  const updated = [...favorites]
+  const isFavorite = updated.indexOf(name);
+  if(isFavorite >=0){
+    updated.splice(isFavorite, 1)
+  } else{
+    updated.push(name);
+  }
+  setFavorites(updated)
+};
+
+
+
   return (
+    <FavoriteProvider value = {{
+      favoritePokemons: favorites,
+      updateFavoritePokemons:updateFavoritePokemons}}>
     <div>
       <Navbar />
       <SearchBar />
@@ -48,7 +66,7 @@ useEffect(()=>{
     <div className="App"></div>
     
     </div>
-
+    </FavoriteProvider>
   );
 }
 export default App;
